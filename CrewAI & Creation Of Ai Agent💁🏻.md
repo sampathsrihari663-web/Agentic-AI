@@ -222,6 +222,14 @@ Possible enhancements include:
 
 Creating an AI Agent
 
+Installation:
+```python
+pip install crewai
+pip install crewai[google-genai]
+#on mac its : ->
+pip3 install "crewai[google-genai]"
+```
+
 This project demonstrates how to create an AI agent using CrewAI and Google’s Gemini model. The agent acts as a PC Building Expert and recommends gaming PC components based on a given budget and requirements
 ```python
 from crewai import Agent, Task, Crew, Process, LLM # importing classes from crewai library to create an agent, define a task, and use a language model for processing the task.
