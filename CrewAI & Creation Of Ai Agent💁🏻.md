@@ -228,7 +228,7 @@ from crewai import Agent, Task, Crew, Process, LLM # importing classes from crew
 import os
 
 # Google Gemini API key
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDPLzINMwxOiaNlVXsYi9jv0RHZOqHvf30"
+os.environ["GOOGLE_API_KEY"] = "YOUR_API_GOES_HERE"
 
 llm = LLM(
     model="gemini/gemini-2.5-flash",# define which model we are going to use for this automation task.
