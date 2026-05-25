@@ -224,33 +224,35 @@ Creating an AI Agent
 
 This project demonstrates how to create an AI agent using CrewAI and Google’s Gemini model. The agent acts as a PC Building Expert and recommends gaming PC components based on a given budget and requirements
 ```python
-from crewai import Agent, Task, Crew, Process, LLM
+from crewai import Agent, Task, Crew, Process, LLM # importing classes from crewai library to create an agent, define a task, and use a language model for processing the task.
 import os
 
 # Google Gemini API key
-os.environ["GOOGLE_API_KEY"] = "YOUR_API_KEY"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDPLzINMwxOiaNlVXsYi9jv0RHZOqHvf30"
 
 llm = LLM(
-    model="gemini/gemini-2.5-flash",
-    temperature=0.3
+    model="gemini/gemini-2.5-flash",# define which model we are going to use for this automation task.
+    temperature=0.3# if the value is higher the responeses will be more creative and longer !
 )
 
-# User input
-PC_build = "Building a Gaming PC With a budget of 2000 dollars in which I want to play games like Cyberpunk 2077, Call of Duty, and Fortnite at high settings. I also want to do some video editing and streaming on Twitch. Can you recommend the best components for my gaming PC build within this budget?"
+#User input
+PC_build = "Buliding a Gaming PC With a budget of 2000 dollars in which i want to play games like Cyberpunk 2077, Call of Duty, and Fortnite at high settings. I also want to do some video editing and streaming on Twitch. Can you recommend the best components for my gaming PC build within this budget?"
 budget = 2000
 
-# Agent Creation
+
+#Agent Creation
 pc_agent = Agent(
     role="PC Building Expert",
     goal="Research and recommend the best components for a gaming PC build within a budget of 2000 dollars while ensuring excellent gaming, streaming and video editing performance.",
     backstory="You are a PC building expert with extensive knowledge of computer hardware and gaming requirements. Your task is to help users build a gaming PC that meets their needs and budget.",
-    verbose=True,
-    llm=llm
+    verbose=True, # to generate detailed reasoning steps.
+    llm=llm # to use the Google Gemini LLM or to define the tools that the agent can use for research and analysis.
 )
 
-# Assigning the task to the agent
-task = Task(
+# Assinging the task to the agent
+task = Task( # calling task class to create a task for the agent.
     description="Research and recommend the best components for a gaming PC build within a budget of 2000 dollars.",
+    # A detailed description of the task that outlines the specific requirements and constraints.
     expected_output="""
     A detailed gaming PC build recommendation including:
     - CPU
@@ -263,24 +265,32 @@ task = Task(
     - Estimated prices
     - Total cost
     - Reasoning for each recommendation
-    """,
-    agent=pc_agent
+    """,# A clear outline of what the expected output should include, such as specific components, estimated prices, total cost, and reasoning for each recommendation.
+    agent=pc_agent # storing the agent that contains the specifications and goals for the task.
 )
 
-# Crew Pipeline
+# Crew pipeline
+'''the crew pipeline is a framework that allows you to organize and manage multiple agents and tasks.
+It provides a structured way to coordinate the efforts of different agents working on various tasks,
+ensuring that they can collaborate effectively to achieve the overall objectives.
+In this case, we are creating a crew that includes our PC building agent and the task we have defined for it.'''
+
 crew = Crew(
-    agents=[pc_agent],
-    tasks=[task],
-    process=Process.sequential,
-    verbose=True
+    agents=[pc_agent], # adding the agent to the crew
+    tasks=[task], # adding the task to the crew
+    process=Process.sequential, # it goes through the tasks in a sequential manner,
+    #meaning that it will complete one task before moving on to the next.
+    verbose=True # gives us better responses,detailed reasoning steps,
+    #and insights into the agent's decision-making process.
 )
 
+# Run the crew pipeline
 print("Starting the PC building process...")
 
 result = crew.kickoff()
 
 print("==" * 30)
-print("PC building process completed. Here are the recommended components:")
+print("PC building process completed. Here are the recommended components💁🏻:")
 print("==" * 30)
 print(result)
 ```
