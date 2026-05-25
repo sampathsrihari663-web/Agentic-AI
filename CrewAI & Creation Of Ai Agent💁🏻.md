@@ -14,3 +14,4 @@ What is a Workflow?
 A workflow is a sequence of steps or tasks that are performed to achieve a specific goal. In AI systems, workflows help organize agents and tasks so they can work together in a logical order.
 
 Creating an AI Agent
+This project demonstrates how to create an AI agent using CrewAI and Google’s Gemini model. The agent acts as a PC Building Expert and recommends gaming PC components based on a given budget and requirements.
