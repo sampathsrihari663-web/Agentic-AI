@@ -136,7 +136,6 @@ This node acts as the trigger for the workflow.
 Hello everyone, welcome to my AI project.
 ```
 
-![Trigger Node](images/workflow.png)
 
 ---
 
