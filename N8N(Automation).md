@@ -165,7 +165,7 @@ POST
 https://global.api.murf.ai/v1/speech/stream
 ```
 
-![HTTP Request Configuration](images/http-request.png)
+![HTTP Request Configuration](images/https-request.png)
 
 ---
 
